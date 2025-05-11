@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Бронювання квесту</title>
+  <style>
+    body {
+      background-color: #0d0c1d;
+      color: #d3d3e7;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h2.booking-title {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button.btn {
+      background-color: #c7a347;
+      color: black;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .conditions {
+      font-size: 14px;
+      margin-top: 30px;
+      background-color: #1a1a2e;
+      padding: 15px;
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+
+    .success-message {
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #2ecc71;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 class="booking-title">Бронювання квесту</h2>
+
+  <form id="booking-form">
+    <input type="text" placeholder="Ім’я" required />
+    <input type="email" placeholder="Email" required />
+    <input type="tel" placeholder="Телефон (у форматі +380XXXXXXXXX)" required />
+    <input type="number" placeholder="Кількість гравців" required />
+    <input type="text" placeholder="Вік (наприклад, 'від 8 до 11 років')" />
+
+    <select required>
+      <option value="">Чи потрібна банкетна зала?</option>
+      <option value="так">Так</option>
+      <option value="ні">Ні</option>
+    </select>
+
+    <select required>
+      <option value="">Якою мовою проводити гру?</option>
+      <option value="українська">Українська</option>
+      <option value="російська">Російська</option>
+    </select>
+
+    <select required>
+      <option value="">Як ви дізналися про нас?</option>
+      <option value="google">Google</option>
+      <option value="instagram">Instagram</option>
+      <option value="рекомендація">Рекомендація</option>
+      <option value="інше">Інше</option>
+    </select>
+
+    <textarea placeholder="Повідомлення"></textarea>
+
+    <p>Ціна: <span id="price"></span></p>
+
+    <button type="submit" class="btn">Забронювати</button>
+  </form>
+
+  <div class="success-message" id="successMessage">
+    ✅ Ваше бронювання прийнято! Очікуйте підтвердження.
+  </div>
+
+  <p class="conditions">
+    ❗👦🏻 Ціна вказана для команди до 4 осіб. Якщо гравців більше, то доплата по 300 грн за особу. Для підтвердження бронювання потрібна передплата.<br>
+    ❗Грають у тверезому стані. У квесті є механізми, які можуть зашкодити нетверезому гравцю. Якщо один із гравців приходить у стані алкогольного чи наркотичного сп'яніння, у грі відмовляється та передоплата не повертається.<br>
+    ❗ У гру не можна брати телефони, годинники, сумки, крихкі предмети, що світяться. Речі можна залишити у камері зберігання.<br>
+    ❗ Дітей до 12 років супроводжує дорослий, як ще один гравець. Якщо з дітьми наш ведучий, без доплати.<br><br>
+    Якщо вас цікавить інший час або дата, будь ласка, зв'яжіться з нами по телефону, Viber або Telegram.
+  </p>
+
+  <script>
+    // Отримання параметрів із URL
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    const quest = getParam('quest') || 'Обраний квест';
+    const date = getParam('date') || '';
+    const time = getParam('time') || '';
+
+    document.querySelector('.booking-title').textContent =
+      `Бронювання квесту ${quest} ${date} о ${time}`;
+
+    // Обробка відправки форми
+    document.getElementById('booking-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // скасовує перезавантаження сторінки
+      document.getElementById('successMessage').style.display = 'block';
+      this.reset(); // очищення форми
+    });
+  </script>
+
+</body>
+</html>

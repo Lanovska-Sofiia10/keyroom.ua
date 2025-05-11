@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Квест «Гра в кальмара»</title>
+  <link rel="stylesheet" href="styles.css" />
+  
+  <style>
+.squid-banner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* або будь-яка інша максимальна ширина */
+  margin: 0 auto; /* це вирівнює банер по центру */
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.banner-title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Трохи затемнено для кращої читабельності */
+  padding: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.banner-title h1 {
+  margin: 0;
+  font-size: 36px;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.info-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.quest-description {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+  color: white;
+}
+
+.quest-title {
+  text-align: justify;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.quest-text {
+  text-align: justify;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.quest-description {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: white;
+  text-align: justify;
+}
+
+.quest-description h2 {
+  text-align: justify;
+  font-size: 28px;
+  margin-top: 40px;
+}
+
+.quest-description ul {
+  padding-left: 20px;
+}
+
+.quest-description ul li {
+  margin-bottom: 8px;
+}
+
+.schedule {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+  color: white;
+}
+
+.schedule h3 {
+  margin-bottom: 10px;
+}
+
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.slot {
+  width: 70px;
+  height: 60px;
+  text-align: center;
+  font-weight: bold;
+  padding: 8px 0;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slot span {
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.available {
+  background-color: #00c347;
+  color: black;
+  transition: background-color 0.3s;
+}
+
+.available:hover {
+  background-color: #00a03a;
+}
+
+.booked {
+  background-color: #c32222;
+  color: white;
+  cursor: not-allowed;
+}
+
+
+    body {
+      background-color: #0a093a;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  
+    .slot-day {
+      margin-bottom: 30px;
+    }
+  
+    .slot-day h3 {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  
+    .slots-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+  
+    .slot {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+      min-width: 80px;
+    }
+  
+    .free {
+      background-color: #1ea63f; /* зелений */
+      color: white;
+    }
+  
+    .free:hover {
+      background-color: #169333;
+    }
+  
+    .booked {
+      background-color: #c0392b; /* червоний */
+      color: white;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <img src="img/KeyRoom.jpg" alt="KeyRoom Logo" class="logo-img" />
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="kids.html">Квести для дітей</a>
+      <a href="reviews.html">Відгуки</a>
+      <div class="dropdown">
+        <span class="dropdown-btn">Квест-ігри ▾</span>
+        <div class="dropdown-content">
+            <a href="game-squid-kids.html">Гра в кальмара для дітей</a>
+            <a href="game-among-us.html">Гра для дітей Among us</a>
+            <a href="game-friday13.html">Квест «П’ятниця 13»</a>
+            <a href="game-mafia.html">Гра в «Мафію» за столом</a>
+            <a href="game-squid.html">Квест «Гра в кальмара»</a>
+            <a href="game-lastofus.html">Квест останні з нас</a>
+          </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Банер -->
+    <section class="squid-banner">
+      <img src="img/squid_game.jpg" alt="Гра в кальмара банер" class="banner-img" />
+      <div class="banner-title">
+        <h1>Квест «Гра в кальмара»</h1>
+      </div>
+    </section>
+  
+    <!-- Інформація про гравців і час -->
+    <section class="info-icons">
+      <div class="info-block">
+        <img src="img/people.png" alt="Гравці" class="icon" />
+        <p>6–24 гравців</p>
+      </div>
+      <div class="info-block">
+        <img src="img/clock.png" alt="Тривалість" class="icon" />
+        <p>60 хвилин</p>
+      </div>
+    </section>
+  
+    <!-- Заголовок і опис -->
+    <section class="quest-description">
+      <h2>Квест «Гра в Кальмара»</h2>
+      <p>
+        Тематика квесту "Гра в Кальмара" заснована на однойменному південнокорейському серіалі. Атмосфера і хід подій
+        відтворюють основні мотиви фільму завдяки сучасному обладнанню, ефектним спецефектам і унікальним завданням-перешкодам.
+        Головною перевагою квесту є його схожість з оригінальною історією, що робить гру особливо популярною серед підлітків,
+        захоплених серіалом.
+      </p>
+    
+      <h2>Особливості квесту</h2>
+      <p>
+        Квест "Гра в Кальмара" у Львові далекий від свого оригінального сюжету в плані жорстокості: тут ніхто не гине.
+        Проте, розробники зробили все можливе, щоб реалізація максимально нагадувала події фільму.
+        У серіалі учасники боролися за виживання і грошовий приз, проходили смертельно небезпечні випробування,
+        що перевіряють кмітливість і фізичну підготовку. У нашому квесті для дітей акцент зроблений на захоплюючих випробуваннях
+        і безпечних причітах, що робить гру доступною і захоплюючою для будь-якого віку.
+        Для створення атмосфери використовуються сучасні технології та костюми, які відповідають стилістиці оригінального шоу.
+      </p>
+    
+      <h2>Умови участі</h2>
+      <p>
+        Для участі в грі необхідно дотримуватися кількох правил:
+        <ul>
+          <li>Кількість гравців: від 6 до 24 осіб.</li>
+          <li>Вік: від 8 років.</li>
+          <li>Здоров'я: учасники не повинні мати серйозних поведінкових або психічних відхилень.</li>
+        </ul>
+      </p>
+    
+      <p><strong>💰 Ціна</strong> вказана для команди до 4 осіб. Якщо гравців більше, то доплата по 400 грн за особу. Для підтвердження бронювання потрібна передоплата.</p>
+      <p>❗ Гравців не пускають у стані алкогольного чи наркотичного сп’яніння, у формі з нецензурними написами, з їжею, напоями чи тваринами.</p>
+      <p>⛔ На квест з візитом обмеження 14+ для підлітків і нижче тільки з дорослим супроводом.</p>
+      <p>📵 У грі не можна брати телефони, годинники з підсвіткою, фітнес-браслети, ліхтарики тощо.</p>
+      <p>👥 За потреби адміністратор може додати до гри одного з наших співробітників. У такому випадку супровід оплачується окремо — 400 грн/год.</p>
+      <p>📞 Для запису звертайтесь за номером, вказаним на сайті, або через Telegram / Viber.</p>
+    </section>
+    
+
+    <section class="schedule">
+      <div class="slot-day">
+        <h3>1 травня 2025</h3>
+        <div class="slots-container">
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=01.05.2025&time=10:15">10:15</a>
+          <a class="slot booked">11:25</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=01.05.2025&time=12:40">12:40</a>
+          <a class="slot booked">14:00</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=01.05.2025&time=15:20">15:20</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=01.05.2025&time=17:00">17:00</a>
+          <a class="slot booked">18:20</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=01.05.2025&time=19:40">19:40</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=01.05.2025&time=20:50">20:50</a>
+        </div>
+      </div>
+      
+      <div class="slot-day">
+        <h3>2 травня 2025</h3>
+        <div class="slots-container">
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=02.05.2025&time=10:15">10:15</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=02.05.2025&time=11:25">11:25</a>
+          <a class="slot booked">12:40</a>
+          <a class="slot booked">14:00</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=02.05.2025&time=15:20">15:20</a>
+          <a class="slot booked">17:00</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=02.05.2025&time=18:20">18:20</a>
+          <a class="slot booked">19:40</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=02.05.2025&time=20:50">20:50</a>
+        </div>
+      </div>
+
+      <div class="slot-day">
+        <h3>3 травня 2025</h3>
+        <div class="slots-container">
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=03.05.2025&time=10:15">10:15</a>
+          <a class="slot booked">11:25</a>
+          <a class="slot booked">12:40</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=03.05.2025&time=14:00">14:00</a>
+          <a class="slot free" href="booking.html?quest=Гра%20в%20кальмара&date=03.05.2025&time=15:20">15:20</a>
+          <a class="slot booked">17:00</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=03.05.2025&time=18:20">18:20</a>
+          <a class="slot free" href="booking.html?quest=%22Гра%20в%20кальмара%22&date=03.05.2025&time=19:40">19:40</a>
+          <a class="slot booked">20:50</a>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+</body>
+</html>

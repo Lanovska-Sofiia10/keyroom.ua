@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гра для дітей Among us</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .banner {
+      position: relative;
+      width: 70%;
+      max-width: 1200px; /* або будь-яка інша максимальна ширина */
+      margin: 0 auto; /* це вирівнює банер по центру */
+    }
+    
+    .banner-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .banner-title {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      color: white;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5); /* Трохи затемнено для кращої читабельності */
+      padding: 10px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .banner-title h1 {
+      margin: 0;
+      font-size: 36px;
+      display: inline-block;
+      padding: 0 20px;
+    }
+    
+    .info-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+    }
+    
+    .info-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-size: 18px;
+    }
+    
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .quest-description {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      color: white;
+    }
+    
+    .quest-title {
+      text-align: justify;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    
+    .quest-text {
+      text-align: justify;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    .quest-description {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: white;
+      text-align: justify;
+    }
+    
+    .quest-description h2 {
+      text-align: justify;
+      font-size: 28px;
+      margin-top: 40px;
+    }
+    
+    .quest-description ul {
+      padding-left: 20px;
+    }
+    
+    .quest-description ul li {
+      margin-bottom: 8px;
+    }
+    
+    .schedule {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+      color: white;
+    }
+    
+    .schedule h3 {
+      margin-bottom: 10px;
+    }
+    
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .slot {
+      width: 70px;
+      height: 60px;
+      text-align: center;
+      font-weight: bold;
+      padding: 8px 0;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .slot span {
+      font-weight: normal;
+      font-size: 13px;
+    }
+    
+    .available {
+      background-color: #00c347;
+      color: black;
+      transition: background-color 0.3s;
+    }
+    
+    .available:hover {
+      background-color: #00a03a;
+    }
+    
+    .booked {
+      background-color: #c32222;
+      color: white;
+      cursor: not-allowed;
+    }
+    
+    
+        body {
+          background-color: #0a093a;
+          color: white;
+          font-family: Arial, sans-serif;
+        }
+      
+        .slot-day {
+          margin-bottom: 30px;
+        }
+      
+        .slot-day h3 {
+          margin-bottom: 10px;
+          text-align: center;
+        }
+      
+        .slots-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+        }
+      
+        .slot {
+          display: inline-block;
+          padding: 10px 15px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          text-align: center;
+          min-width: 80px;
+        }
+      
+        .free {
+          background-color: #1ea63f; /* зелений */
+          color: white;
+        }
+      
+        .free:hover {
+          background-color: #169333;
+        }
+      
+        .booked {
+          background-color: #c0392b; /* червоний */
+          color: white;
+          pointer-events: none;
+          opacity: 0.6;
+        }
+      </style>
+</head>
+<body>
+  <header class="navbar">
+    <img src="img/KeyRoom.jpg" alt="KeyRoom Logo" class="logo-img" />
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="kids.html">Квести для дітей</a>
+      <a href="reviews.html">Відгуки</a>
+      <div class="dropdown">
+        <span class="dropdown-btn">Квест-ігри ▾</span>
+        <div class="dropdown-content">
+            <a href="game-squid-kids.html">Гра в кальмара для дітей</a>
+            <a href="game-among-us.html">Гра для дітей Among us</a>
+            <a href="game-friday13.html">Квест «П’ятниця 13»</a>
+            <a href="game-mafia.html">Гра в «Мафію» за столом</a>
+            <a href="game-squid.html">Квест «Гра в кальмара»</a>
+            <a href="game-lastofus.html">Квест останні з нас</a>
+          </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Банер -->
+    <section class="banner">
+      <img src="img/among_us.jpg" alt="Гра для дітей Among Us" class="banner-img" />
+      <div class="banner-title">
+        <h1>Гра для дітей Among Us</h1>
+      </div>
+    </section>
+  
+    <!-- Інформація про гравців і час -->
+    <section class="info-icons">
+      <div class="info-block">
+        <img src="img/people.png" alt="Гравці" class="icon" />
+        <p>4–20 гравців</p>
+      </div>
+      <div class="info-block">
+        <img src="img/clock.png" alt="Тривалість" class="icon" />
+        <p>60 хвилин</p>
+      </div>
+    </section>
+  
+    <!-- Заголовок і опис -->
+    <section class="quest-description">
+      <h2>Квест “Among Us”</h2>
+      <p>
+        Пориньте в атмосферу популярної гри Among Us, але в реальності! Це відмінний варіант для дітей і підлітків, де кожен учасник зможе відчути себе справжнім дослідником космосу.
+      </p>
+
+      <h2>Чого очікувати від квесту?</h2>
+      <p>
+         <ul>
+           <li>Сюжет: Ви – команда дослідників космосу, що працює на науковій базі. Ваше завдання-виконувати завдання: налаштовувати обладнання, проводити експерименти, ремонтувати системи. Але будьте обережні – серед вас є зрадник!</li>
+           <li>Місія зрадника: усувати інших учасників або саботувати роботу бази, відключаючи системи зв’язку, гасивши світло і створюючи хаос.</li>
+           <li>Завдання команди: виявити зрадника, піймавши його на місці злочину або викривши в ході обговорення.</li>
+          </ul>
+
+          Умови участі:
+          <ul>
+            <li>Вік: від 8 років.</li>
+            <li>Кількість гравців: від 4 до 21 людини.</li>
+            <li>Тривалість сеансу: 1 годину, з можливістю провести кілька ігор.</li>
+            <li>Екіпірування: для безпеки гравці надягають шоломи і захисні окуляри.</li>
+           </ul>
+
+           Рекомендація:
+           <ul>
+            <li>Одягайте зручний одяг і взуття.</li>
+            <li>Уникайте високих зачісок або прикрас на голові-шоломи повинні щільно прилягати.</li>
+            <li>У дощову або сніжну погоду приносьте змінне взуття.</li>
+           </ul>
+
+           Особливості гри:
+           <ul>
+            <li>Просторий ігровий майданчик, що дозволяє комфортно грати великій компанії.</li>
+            <li>Ефекти, що створюють атмосферу справжньої космічної бази.</li>
+            <li>Швидке навчання для новачків-не обов’язково вміти грати в Among Us або “мафію”.</li>
+           </ul>
+
+           Цей квест-відмінна можливість повеселитися в колі друзів або відзначити свято. Бронюйте гру вже зараз і спробуйте викрити самозванця!
+       </p>
+    
+      <p><strong>💰 Ціна</strong> вказана для команди до 4 осіб. Якщо гравців більше, то доплата по 400 грн за особу. Для підтвердження бронювання потрібна передоплата.</p>
+      <p>❗ Гравців не пускають у стані алкогольного чи наркотичного сп’яніння, у формі з нецензурними написами, з їжею, напоями чи тваринами.</p>
+      <p>⛔ На квест з візитом обмеження 14+ для підлітків і нижче тільки з дорослим супроводом.</p>
+      <p>📵 У грі не можна брати телефони, годинники з підсвіткою, фітнес-браслети, ліхтарики тощо.</p>
+      <p>👥 За потреби адміністратор може додати до гри одного з наших співробітників. У такому випадку супровід оплачується окремо — 400 грн/год.</p>
+      <p>📞 Для запису звертайтесь за номером, вказаним на сайті, або через Telegram / Viber.</p>
+    </section>
+
+    <section class="schedule">
+      <div class="slot-day">
+        <h3>1 травня 2025</h3>
+        <div class="slots-container">
+          <a class="slot booked">10:15</a>
+          <a class="slot booked">11:25</a>
+          <a class="slot booked">12:40</a>
+          <a class="slot booked">14:00</a>
+          <a class="slot booked">15:20</a>
+          <a class="slot booked">17:00</a>
+          <a class="slot booked">18:20</a>
+          <a class="slot booked">19:40</a>
+          <a class="slot booked">20:50</a>
+
+        </div>
+
+        <h3>2 травня 2025</h3>
+        <div class="slots-container">
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=02.05.2025&time=10:15">10:15</a>
+          <a class="slot booked">11:25</a>
+          <a class="slot booked">12:40</a>
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=02.05.2025&time=14:00">14:00</a>
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=02.05.2025&time=15:20">15:20</a>
+          <a class="slot booked">17:00</a>
+          <a class="slot booked">18:20</a>
+          <a class="slot booked">19:40</a>          
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=02.05.2025&time=20:50">20:50</a>
+        </div>
+
+        <h3>3 травня 2025</h3>
+        <div class="slots-container">
+          <a class="slot booked">10:15</a>
+          <a class="slot booked">11:25</a>
+          <a class="slot booked">12:40</a>
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=03.05.2025&time=14:00">14:00</a>
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=03.05.2025&time=15:20">15:20</a>
+          <a class="slot booked">17:00</a>
+          <a class="slot booked">18:20</a>          
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=03.05.2025&time=19:40">19:40</a>
+          <a class="slot free" href="booking.html?quest=Гра%20для%20дітей%20для%20дітей%20Among%20us&date=03.05.2025&time=20:50">20:50</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
